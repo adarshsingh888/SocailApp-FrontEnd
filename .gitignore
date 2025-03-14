@@ -1,0 +1,20 @@
+# Node.js dependencies
+node_modules/
+
+# Build output
+dist/
+.parcel-cache/
+# Dependency lock files (optional)
+package-lock.json
+
+# Environment variables
+.env
+.env.local
+.env.production
+.env.development
+
+# Editor & OS-specific files
+.vscode/
+.idea/
+.DS_Store
+Thumbs.db
