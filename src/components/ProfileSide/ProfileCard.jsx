@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import { useSelector } from 'react-redux';
 import { Link, useParams } from 'react-router-dom';
-import cover from '../../../public/assets/img/cover.jpg'
+import cover from '../../cover.jpg'
 import defaultProfile from '../../../public/assets/img/defaultProfile.png'
 
 
@@ -18,7 +18,7 @@ function ProfileCard() {
       <div className='rounded-t-lg h-32 overflow-hidden'>
         <img
           className='object-cover object-top w-full'
-          src={user?.coverPicture ? user.coverPicture : cover}
+          src={user?.coverPicture ? user?.coverPicture : cover}
           alt='Cover'
         />
 
@@ -28,7 +28,7 @@ function ProfileCard() {
       <div className='mx-auto w-32 h-32 relative -mt-16 border-4 border-white rounded-full overflow-hidden'>
         <img
           className='object-cover object-center h-32'
-          src={user?.profilePicture ? user.profilePicture : defaultProfile}
+          src={user?.profilePicture ? user?.profilePicture : defaultProfile}
           alt='Profile'
         />
       </div>

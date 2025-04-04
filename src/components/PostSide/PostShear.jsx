@@ -73,7 +73,7 @@ function PostShare() {
   return (
     <div className='flex flex-col bg-white m-4 rounded-lg shadow-lg'>
       <div className='flex flex-wrap p-4 justify-center items-center border-b'>
-        <img src={user.profilePicture ? process.env.CLOUD_URL + user.profilePicture + ".png" : defaultProfile} alt="" className='w-10 h-10 rounded-full mr-4' />
+        <img src={user.profilePicture ? process.env.CLOUD_URL + user?.profilePicture + ".png" : defaultProfile} alt="" className='w-10 h-10 rounded-full mr-4' />
         <input
           type="text"
           name='des'
