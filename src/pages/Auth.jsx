@@ -1,7 +1,8 @@
-import React, { useState } from "react";
+import React, { useState,useEffect } from "react";
 import logo from "../../public/assets/img/logo.png";
 import { useDispatch, useSelector } from 'react-redux';
 import { signUp, logIn } from "../actions/AuthAction";
+import { useNavigate } from "react-router-dom";
 
 function Auth() {
   const [isSignUp, setisSignUp] = useState(true);
@@ -20,7 +21,14 @@ function Auth() {
     }));
   };
 
+  const navigate = useNavigate();
+  const { authData } = useSelector((state) => state.AuthReducer); // ✅
 
+  useEffect(() => {
+    if (authData) {
+      navigate("/home"); // ✅ Navigate only after success
+    }
+  }, [authData, navigate]);
 
 
   return (
@@ -44,6 +52,7 @@ function Auth() {
 }
 
 function SignUP({ setisSignUp, handleChange, isConfirm, data, setisConfirm }) {
+  const navigate = useNavigate();
   const { error } = useSelector((state) => state.AuthReducer)
   const dispatch = useDispatch();
   const handleSubmit = (e) => {
@@ -135,11 +144,12 @@ function SignUP({ setisSignUp, handleChange, isConfirm, data, setisConfirm }) {
 }
 
 function LogIN({ setisSignUp, handleChange, data }) {
-
+  const navigate = useNavigate();
   const dispatch = useDispatch();
   const handleSubmit = (e) => {
     e.preventDefault();
     dispatch(logIn(data));
+    setisSignUp(true);
 
   }
   const loading = useSelector((state) => state.AuthReducer.loading)
