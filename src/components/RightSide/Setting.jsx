@@ -4,10 +4,15 @@ import { deleteUser } from '../../api/UserRequest.js';
 function Setting() {
   const dispatch=useDispatch();
   const {user}=useSelector((state)=> state.AuthReducer.authData);
-  console.log(user)
   const handleDelete= async()=>{
-    const ress= await deleteUser(user._id,user)
-    console.log(ress)
+    const ress= await deleteUser()
+    console.log(ress);
+    if(ress.status===200){
+      alert("Account Deleted Successfully");
+    }
+    else{
+      alert("Something went wrong");
+    }
     dispatch({type:"LOG_OUT"});
   }
   const handelLogOut=()=>{

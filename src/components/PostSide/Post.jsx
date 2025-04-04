@@ -4,20 +4,22 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faHeart, faComment, faShare, faPaperPlane } from '@fortawesome/free-solid-svg-icons';
 import { likedPost } from '../../api/PostRequest';
 import { likePost } from '../../actions/PostAction';
-
+import EditModel from './EditModel';
 function Post({ postData }) {
     const { des, userId, image,postId,createdAt,likes } = postData;
     const { user } = useSelector((state) => state.AuthReducer.authData);
     const [liked, setLiked] = useState(likes !==null? likes.includes(user.id):false);
+    const [modelOpen,setModelOpen]=useState(false);
     const [countlikes, setcountLikes] = useState(likes !==null? likes.length : 0);
     const dispatch = useDispatch();
-    console.log(user.id)
-    console.log(postId)
+    const isEdit=user.id === userId;
+    // console.log(isEdit)
+    // console.log(user.id)
+    // console.log(userId)
     const handlePostLiked = async () => {
         dispatch(likePost(postData._id, user._id))
-        setLiked((prev) => !prev);
         setcountLikes((prev) => (liked ? prev - 1 : prev + 1));
-        console.log(postId)
+        setLiked((prev) => !prev);
         likedPost(postId);
         
     };
@@ -51,6 +53,7 @@ function Post({ postData }) {
                     />
                     <FontAwesomeIcon icon={faComment} className="cursor-pointer text-xl text-gray-700" />
                     <FontAwesomeIcon icon={faPaperPlane} className="cursor-pointer text-xl text-gray-700" />
+                   {isEdit &&  <button onClick={() => setModelOpen(true)}>Edit</button>}
                 </div>
             </div>
 
@@ -61,6 +64,9 @@ function Post({ postData }) {
                     {/* <span className="font-semibold">{userId} </span> */}
                     {des}
                 </p>
+            </div>
+            <div>
+                <EditModel modelOpen={modelOpen} setModelOpen={setModelOpen}/>
             </div>
         </div>
     );

@@ -10,6 +10,6 @@ API.interceptors.request.use((req) => {
 });
 
 
-export const getTimelinePosts = (username) => API.get(`/post/userPostByUsername/${username}`);
+export const getPostByUsername = (username) => API.get(`/post/userPostByUsername/${username}`);
 export const getAllPost = () => API.get(`/post/get-all`);
 export const likedPost = (postId) => API.put(`/post/like/${postId}`);

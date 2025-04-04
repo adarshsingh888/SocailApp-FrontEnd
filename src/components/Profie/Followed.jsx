@@ -12,7 +12,6 @@ function Followed() {
       try {
         const response = await getFollowedUser();
         const { data } = response;
-        console.log("Fetched Data:", data);
         setPerson(data);
       } catch (error) {
         console.error("Error fetching users:", error);

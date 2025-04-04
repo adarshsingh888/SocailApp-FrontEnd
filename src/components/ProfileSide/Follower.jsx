@@ -12,7 +12,6 @@ function Follower() {
       try {
         const response = await getUnfollowedUser();
         const { data } = response;
-        console.log("Fetched Data:", data);
         setPerson(data);
       } catch (error) {
         console.error("Error fetching users:", error);

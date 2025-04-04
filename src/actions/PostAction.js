@@ -1,10 +1,9 @@
 import * as PostApi from '../api/PostRequest';
 
-export const getTimelinePosts = (username) => async (dispatch) => {
+export const getPostByUsername = (username) => async (dispatch) => {
   dispatch({ type: "RETREIVING_START" });
   try {
-    const { data } = await PostApi.getTimelinePosts(username);
-   
+    const { data } = await PostApi.getPostByUsername(username);
     dispatch({ type: "RETREIVING_SUCCESS", payload: data }); // Ensure you're passing 'payload' here
   } catch (error) {
     dispatch({
