@@ -1,5 +1,4 @@
 import React, { useState,useEffect } from 'react'
-import defaultProfile from '../../../public/assets/img/defaultProfile.png'
 import { useDispatch, useSelector } from 'react-redux'
 import { followUser, followUnfollowUser } from '../../actions/UserAction.js';
 import { useParams } from 'react-router-dom';
@@ -9,6 +8,7 @@ function User({ person }) {
   const { user } = useSelector((state) => state.AuthReducer.authData)
   const [following,setFollowing]=useState(false)
   const {username}=useParams();
+  const defaultProfile = "http://res.cloudinary.com/dwue6nt31/image/upload/v1744525015/el9miugv9tkn6fxl2hsw.png";
   useEffect(() => {
     if (username) {
       setFollowing(true);
