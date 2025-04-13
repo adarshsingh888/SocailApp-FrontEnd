@@ -1,11 +1,14 @@
 import React, { useContext } from 'react'
-import cover from "../../../public/assets/img/cover.jpg"
-import defaultProfile from "../../../public/assets/img/defaultProfile.png"
+//import cover from "../../../public/assets/img/cover.jpg"
+//import defaultProfile from "../../../public/assets/img/defaultProfile.png"
 import { UserContext } from '../../store/userContext'
 import { useSelector } from 'react-redux'
 function ProfCard() {
   const userr=useContext(UserContext)
   const {user}=useSelector((state)=> state.AuthReducer.authData);
+  const defaultProfile="http://res.cloudinary.com/dwue6nt31/image/upload/v1744525015/el9miugv9tkn6fxl2hsw.png";
+  const cover="http://res.cloudinary.com/dwue6nt31/image/upload/v1744525016/bmodykkl7klhinez1jef.jpg";
+
   if(!userr){
     return(
         <div>

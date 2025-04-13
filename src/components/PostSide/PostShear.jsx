@@ -3,7 +3,7 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faImage, faVideo, faMapMarkerAlt, faCalendarAlt, faTimes } from '@fortawesome/free-solid-svg-icons';
 import { useSelector, useDispatch } from 'react-redux';
 import {  uploadPost } from '../../actions/uploadAction';
-import defaultProfile from '../../../public/assets/img/defaultProfile.png'
+//import defaultProfile from '../../../public/assets/img/defaultProfile.png'
 function PostShare() {
   const [image, setImage] = useState(null);
   const [desc, setDesc] = useState(null)
@@ -19,7 +19,7 @@ function PostShare() {
   // const videoClicked = () => {
   //   imgRef.current.click();
   // };
-
+  const defaultProfile="http://res.cloudinary.com/dwue6nt31/image/upload/v1744525015/el9miugv9tkn6fxl2hsw.png";
   const imgChange = (e) => {
     const img = e.target.files[0];
    // console.log(img);

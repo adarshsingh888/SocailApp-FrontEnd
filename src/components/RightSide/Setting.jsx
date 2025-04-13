@@ -38,9 +38,6 @@ function Setting() {
       setIsDeleting(false); // Re-enable button after error
     }
   };
-
-
-
   const handelLogOut = () => {
     navigate("/");
     localStorage.removeItem("profile");
