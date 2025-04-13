@@ -6,13 +6,13 @@ import { likedPost } from '../../api/PostRequest';
 import { likePost } from '../../actions/PostAction';
 import EditModel from './EditModel';
 function Post({ postData }) {
-    const { des, userId, image,postId,createdAt,likes } = postData;
+    const { des, userId, image, postId, createdAt, likes } = postData;
     const { user } = useSelector((state) => state.AuthReducer.authData);
-    const [liked, setLiked] = useState(likes !==null? likes.includes(user.id):false);
-    const [modelOpen,setModelOpen]=useState(false);
-    const [countlikes, setcountLikes] = useState(likes !==null? likes.length : 0);
+    const [liked, setLiked] = useState(likes !== null ? likes.includes(user.id) : false);
+    const [modelOpen, setModelOpen] = useState(false);
+    const [countlikes, setcountLikes] = useState(likes !== null ? likes.length : 0);
     const dispatch = useDispatch();
-    const isEdit=user.id === userId;
+    const isEdit = user.id === userId;
     // console.log(isEdit)
     // console.log(user.id)
     // console.log(userId)
@@ -21,7 +21,7 @@ function Post({ postData }) {
         setcountLikes((prev) => (liked ? prev - 1 : prev + 1));
         setLiked((prev) => !prev);
         likedPost(postId);
-        
+
     };
     return (
         <div className="bg-white rounded-lg shadow-md w-full max-w-lg mx-auto mb-6">
@@ -43,6 +43,15 @@ function Post({ postData }) {
                 <img src={image} alt="Post" className="w-full max-h-[400px] object-cover" />
             )}
 
+            {/* Likes & Description */}
+            <div className="px-4 ">
+               
+                <p className="text-sm text-gray-800 mt-1 pr-4 break-words ">
+                    {/* <span className="font-semibold">{userId} </span> */}
+                    {des}
+                </p>
+            </div>
+
             {/* Icons Section */}
             <div className="flex justify-between items-center px-4 py-3">
                 <div className="flex space-x-4">
@@ -53,20 +62,17 @@ function Post({ postData }) {
                     />
                     <FontAwesomeIcon icon={faComment} className="cursor-pointer text-xl text-gray-700" />
                     <FontAwesomeIcon icon={faPaperPlane} className="cursor-pointer text-xl text-gray-700" />
-                   {isEdit &&  <button onClick={() => setModelOpen(true)}>Edit</button>}
+                    {/* {isEdit && <button onClick={() => setModelOpen(true)}>Edit</button>} */}
                 </div>
             </div>
-
             {/* Likes & Description */}
             <div className="px-4 pb-3">
                 <p className="text-sm font-semibold">{countlikes} likes</p>
-                <p className="text-sm text-gray-800 mt-1 pr-4 break-words ">
-                    {/* <span className="font-semibold">{userId} </span> */}
-                    {des}
-                </p>
+                
             </div>
+
             <div>
-                <EditModel modelOpen={modelOpen} setModelOpen={setModelOpen}/>
+                <EditModel modelOpen={modelOpen} setModelOpen={setModelOpen} />
             </div>
         </div>
     );

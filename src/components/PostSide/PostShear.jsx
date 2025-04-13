@@ -22,9 +22,9 @@ function PostShare() {
   const defaultProfile="http://res.cloudinary.com/dwue6nt31/image/upload/v1744525015/el9miugv9tkn6fxl2hsw.png";
   const imgChange = (e) => {
     const img = e.target.files[0];
-   // console.log(img);
+   console.log(img);
     setImage(img);
-  //  console.log(image)
+    console.log(image)
   };
   const handleUpload = async (e) => {
     e.preventDefault();
@@ -47,6 +47,7 @@ function PostShare() {
           body: data
         }
       )
+      console.log(res);
       const uploadedImgUrl = await res.json();
       newPost.image=uploadedImgUrl.url;
       

@@ -1,15 +1,16 @@
 import React, { useEffect, useState } from 'react';
 import { useSelector } from 'react-redux';
 import { Link, useParams } from 'react-router-dom';
-import cover from '../../cover.jpg'
-import defaultProfile from '../../../public/assets/img/defaultProfile.png'
+
 
 
 function ProfileCard() {
  
   const {user} = useSelector((state) => state.AuthReducer.authData) || {};
   const username=user.username;
-  
+  const defaultProfile = "http://res.cloudinary.com/dwue6nt31/image/upload/v1744525015/el9miugv9tkn6fxl2hsw.png";
+  const cover = "http://res.cloudinary.com/dwue6nt31/image/upload/v1744525016/bmodykkl7klhinez1jef.jpg";
+
      
 
   return (

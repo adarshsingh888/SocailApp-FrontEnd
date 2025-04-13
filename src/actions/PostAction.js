@@ -17,6 +17,7 @@ export const getAllPost = () => async (dispatch) => {
   dispatch({ type: "RETREIVING_START" });
   try {
     const { data } = await PostApi.getAllPost();
+    console.log(data);
     dispatch({ type: "RETREIVING_SUCCESS", payload: data }); // Ensure you're passing 'payload' here
   } catch (error) {
     dispatch({
